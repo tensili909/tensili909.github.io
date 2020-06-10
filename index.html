@@ -1,7 +1,83 @@
 <html>
+<meta charset="UTF-8">
+
+<head>
+  <title>kani</title>
+</head>
 
 <body>
-  <h1>こんにちは〜</h1>
+  <h1>カニのおもちゃです</h1>
+  <div style="position: fixed; z-index: -1">
+    <img src="./umi_kani.png" width="400">
+  </div>
+  <div>
+
+  </div>
+  <!-- 長方形 -->
+  <svg width="600" height="600" viewBox="0 0 400 600">
+    <rect x="10" y="130" width="40" height="150" rx="10" ry="10" fill="pink"></rect>
+    <rect x="60" y="130" width="40" height="150" rx="10" ry="10" fill="green"></rect>
+    <rect x="110" y="130" width="40" height="150" rx="10" ry="10" fill="blue"></rect>
+    <rect x="160" y="130" width="40" height="150" rx="10" ry="10" fill="orange"></rect>
+  </svg>
 </body>
+<script>
+  var wmouse;
+  function mouseImage() {
+    // イメージオブジェクトを作成
+    wmouse = new Image();
+    // イメージオブジェクトのスタイルを設定
+    var style = wmouse.style;
+    // fixed（画面左上を基点、スクロール無視）を設定
+    style.position = "fixed";
+    // 画像をセット
+    wmouse.src = "./stick.png";
+
+    document.body.appendChild(wmouse);
+
+    // イベント追加
+    if (document.addEventListener) {
+      document.addEventListener("mousemove", mouseMove);
+    } else if (document.attachEvent) {
+      document.attachEvent("onmousemove", mouseMove);
+    }
+  }
+
+  function mouseMove(e) {
+    wmouse.style.left = (e.clientX - 25) + "px";
+    wmouse.style.top = (e.clientY - 150) + "px";
+  }
+
+  const red = 120;
+  const green = 170;
+  const blue = 220;
+  const yellow = 270;
+  const margin = 50;
+  const mi = new Audio("./mi.mp3");
+  const so = new Audio("./so.mp3");
+  const ra = new Audio("./ra.mp3");
+  const si = new Audio("./si.mp3");
+
+  document.addEventListener("click", function (e) {
+    console.log("hoge", e.pageX, e.pageY);
+    const mouseX = e.pageX;
+    if (red < mouseX && mouseX < red + margin) {
+      console.log("red!");
+      mi.play();
+    } else if (green < mouseX && mouseX < green + margin) {
+      console.log("green!");
+      so.play();
+    } else if (blue < mouseX && mouseX < blue + margin) {
+      console.log("blue!");
+      ra.play();
+    } else if (yellow < mouseX && mouseX < yellow + margin) {
+      console.log("yellow!");
+      si.play();
+    }
+  })
+
+  mouseImage();
+
+</script>
 
 </html>
