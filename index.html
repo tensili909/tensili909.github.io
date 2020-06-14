@@ -54,26 +54,26 @@
   const blue = 220;
   const yellow = 270;
   const margin = 50;
-  const mi = new Audio("./mi.mp3");
-  const so = new Audio("./so.mp3");
-  const ra = new Audio("./ra.mp3");
-  const si = new Audio("./si.mp3");
+  const one = new Audio("./static/one.mp3");
+  const two = new Audio("./static/two.mp3");
+  const three = new Audio("./static/three.mp3");
+  const si = new Audio("./static/four.mp3");
 
   document.addEventListener("click", function (e) {
     console.log("hoge", e.pageX, e.pageY);
     const mouseX = e.pageX;
     if (red < mouseX && mouseX < red + margin) {
       console.log("red!");
-      mi.play();
+      one.play();
     } else if (green < mouseX && mouseX < green + margin) {
       console.log("green!");
-      so.play();
+      two.play();
     } else if (blue < mouseX && mouseX < blue + margin) {
       console.log("blue!");
-      ra.play();
+      three.play();
     } else if (yellow < mouseX && mouseX < yellow + margin) {
       console.log("yellow!");
-      si.play();
+      four.play();
     }
   })
 
